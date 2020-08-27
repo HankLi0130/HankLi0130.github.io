@@ -1,63 +1,67 @@
 baseurl = "https://hankli0130.github.io/"
-languageCode = "en-us"
-title = "HankLi"
-theme = "hello-friend"
-paginate = 5
+languageCode = "en-ca"
+title = "Hank Dev"
+theme = "minimal"
+disqusShortname = "username" # delete this to disable disqus comments
+googleAnalytics = ""
 
 [params]
-  # dir name of your blog content (default is `content/posts`).
-  # the list of set content will show up on your index page (baseurl).
-  contentTypeName = "posts"
+    author = "Hank Li"
+    description = "Life, Tech and stuff"
+    githubUsername = "HankLi0130"
+    accent = "red"
+    showBorder = true
+    backgroundColor = "white"
+    font = "Raleway" # should match the name on Google Fonts!
+    highlight = true
+    highlightStyle = "default"
+    highlightLanguages = ["kotlin", "java"]
 
-  # "light" or "dark"
-  defaultTheme = "light"
+[[menu.main]]
+    url = "/"
+    name = "Home"
+    weight = 1
 
-  # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 2
+[[menu.main]]
+    url = "/about/"
+    name = "About"
+    weight = 2
 
-  # Show reading time in minutes for posts
-  showReadingTime = false
+[[menu.main]]
+    url = "/post/"
+    name = "Posts"
+    weight = 3
 
-  # Show table of contents at the top of your posts (defaults to false)
-  # Alternatively, add this param to post front matter for specific posts
-  # toc = true
+[[menu.main]]
+    url = "/project/"
+    name = "Projects"
+    weight = 4
 
-  # Show full page content in RSS feed items
-  #(default is Description or Summary metadata in the front matter)
-  # rssFullText = true
+# Social icons to be shown on the right-hand side of the navigation bar.
+# The "name" field should match the name of the icon in Font Awesome.
+# The list of available icons can be found at http://fontawesome.io/icons.
 
-[languages]
-  [languages.en]
-    title = "HankLi"
-    subtitle = "Life, tech, and staff"
-    keywords = ""
-    copyright = ""
-    menuMore = "Show more"
-    writtenBy = "Written by"
-    readMore = "Read more"
-    readOtherPosts = "Read other posts"
-    newerPosts = "Newer posts"
-    olderPosts = "Older posts"
-    minuteReadingTime = "min read"
-    dateFormatSingle = "2006-01-02"
-    dateFormatList = "2006-01-02"
-    # leave empty to disable, enter display text to enable
-    # lastModDisplay = ""
+[[menu.icon]]
+    url = "mailto:me@example.com"
+    name = "envelope-o"
+    weight = 1
 
-    [languages.en.params.logo]
-      logoText = "HankLi"
-      logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
+[[menu.icon]]
+    url = "https://github.com/username/"
+    name = "github"
+    weight = 2
 
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        identifier = "about"
-        name = "About"
-        url = "/about"
-      [[languages.en.menu.main]]
-        identifier = "showcase"
-        name = "Showcase"
-        url = "/showcase"
+[[menu.icon]]
+    url = "https://twitter.com/username/"
+    name = "twitter"
+    weight = 3
+
+[[menu.icon]]
+    url = "https://www.linkedin.com/in/username/"
+    name = "linkedin"
+    weight = 4
+
+[[menu.icon]]
+    url = "https://www.stackoverflow.com/username/"
+    name = "stack-overflow"
+    weight = 5
