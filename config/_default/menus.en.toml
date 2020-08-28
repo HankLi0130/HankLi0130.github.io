@@ -1,0 +1,44 @@
+[[main]]
+url = "/"
+name = "Home"
+weight = 1
+
+[[main]]
+url = "/about/"
+name = "About"
+weight = 2
+
+[[main]]
+url = "/post/"
+name = "Posts"
+weight = 3
+
+[[main]]
+url = "/project/"
+name = "Projects"
+weight = 4
+
+[[icon]]
+    url = "mailto:hankli0130@gmail.com"
+    name = "envelope-o"
+    weight = 1
+
+[[icon]]
+    url = "https://github.com/HankLi0130/"
+    name = "github"
+    weight = 2
+
+[[icon]]
+    url = "https://twitter.com/HankLi0130/"
+    name = "twitter"
+    weight = 3
+
+[[icon]]
+    url = "https://www.linkedin.com/in/hankli0130/"
+    name = "linkedin"
+    weight = 4
+
+[[icon]]
+    url = "https://www.youtube.com/channel/UCVYje6c5eOPJwu2-1tfQiEw"
+    name = "youtube"
+    weight = 5
