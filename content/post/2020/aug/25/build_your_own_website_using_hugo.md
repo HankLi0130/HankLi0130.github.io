@@ -41,7 +41,7 @@ In my case, I'm using [Minimal](https://themes.gohugo.io/minimal/) for my blog.
 > git submodule add [theme repository] themes/[theme name]
 ```
 
-Go into the [name] folder and type git commands to apply a theme for your website.
+Go into the `[name]` folder and type git commands to apply a theme for your website.
 
 ### Step 4: Setting Configuration
 
@@ -57,7 +57,7 @@ It's really easy to write a post using Hugo, just type the command below.
 > hugo new posts/[post name].md
 ```
 
-It creates a new post in content folder. You have to write it with markdown syntax.
+It creates a new post in `content` folder. You have to write it with markdown syntax.
 
 ### Step 6: Test your website
 
@@ -93,7 +93,7 @@ First of all, you have to create 2 repositories on GitHub and then connect them 
 > ./deploy.sh [commit message]
 ```
 
-7. Type `[USERNAME].github.io` and you can see the website.
+7. Type `[USERNAME].github.io` on your browser and you can see the website.
 
 ### Step 8: Enjoy your website
 Since you've finished the steps above, you can create new posts easily and push them to the repository, it will update your website.

@@ -4,8 +4,8 @@ name = "首頁"
 weight = 1
 
 [[main]]
-url = "/zh/about/"
-name = "關於我"
+url = "https://www.cakeresume.com/hank-li"
+name = "履歷"
 weight = 2
 
 [[main]]
@@ -14,8 +14,8 @@ name = "文章"
 weight = 3
 
 [[main]]
-url = "/zh/project/"
-name = "作品"
+url = "https://www.cakeresume.com/users/hank-li/portfolio"
+name = "專案"
 weight = 4
 
 [[icon]]
