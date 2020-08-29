@@ -12,62 +12,94 @@ As a developer, I need a website to recode the things I've done. I found out Hug
 
 # Let's get it started
 
-### 1. Install Hugo
+### Step 1: Install Hugo
 
 I recommend [Homebrew](https://brew.sh/) to install Hugo because it's really easy if you're using macOS.
 
 Open your terminal and type:
-```
+```text
 > brew install hugo
 ```
 
-### 2. Create new website
+### Step 2: Create new website
 
-```
+```text
 > hugo new site [name]
 ```
 
-The above will create a new Hugo site in [name] folder
+The above will create a new Hugo site in `[name]` folder
  
-### 3. Download theme you like
+### Step 3: Download theme you like
 
 Go to [Hugo themes](https://themes.gohugo.io/), pick one you like and copy the address (using https instead of ssh of theme repository)
 
-```
+In my case, I'm using [Minimal](https://themes.gohugo.io/minimal/) for my blog.
+
+```text
 > cd [name]
 > git init
 > git submodule add [theme repository] themes/[theme name]
 ```
-### 4. Set Configuration
 
-Follow instruction of the theme. Usually in the page of the theme.
+Go into the [name] folder and type git commands to apply a theme for your website.
 
-### 5. Wirte a new post
+### Step 4: Setting Configuration
 
-```
-> hugo new posts/[post name]
+Just follow instructions of the theme. Usually you can find it in the page of the theme.
+
+You can find the Minial configuration [here](https://themes.gohugo.io/minimal/#configuration)
+
+### Step 5: Let's wirte a new post
+
+It's really easy to write a post using Hugo, just type the command below.
+
+``` text
+> hugo new posts/[post name].md
 ```
 
 It creates a new post in content folder. You have to write it with markdown syntax.
 
-### 6. Test your website
+### Step 6: Test your website
 
-```
+It's time to test the website, type the command below
+
+```text
 > hugo server -D
 ```
 
-Open a new tab in your brower and type "localhost:1313" and you'll see your website.
+Open a new tab in your brower and type `localhost:1313`.
 
-### 7. Deploy to GitHub page
+### Step 7: Deploy to GitHub page
+
+First of all, you have to create 2 repositories on GitHub and then connect them to your project and website.
+
+1. Create a `[YOUR-PROJECT]` (e.g. blog) repository on GitHub. This repository will contain Hugo’s content and other source files.
+
+2. Create a `[USERNAME]`.github.io GitHub repository. This is the repository that will contain the fully rendered version of your Hugo website.
+
+3. Add new remote in your existing Hugo project to the new local `[YOUR-PROJECT]` repository.
+
+4. Type command below
 
 ```text
 > git submodule add -b master https://github.com/<USERNAME>/<USERNAME>.github.io.git public
+```
 
-// create deploy.sh and chmode +x
+5. Make sure the baseURL in your config file is updated with: `[USERNAME]`.github.io
 
+6. Create a [deploy.sh](https://gohugo.io/hosting-and-deployment/hosting-on-github/#put-it-into-a-script) and run it like
+
+```text
 > ./deploy.sh [commit message]
 ```
 
-### 8. Enjoy your website
+7. Type `[USERNAME].github.io` and you can see the website.
 
-Type "[username].github.it" and the website will show up.
+### Step 8: Enjoy your website
+Since you've finished the steps above, you can create new posts easily and push them to the repository, it will update your website.
+
+# References
+
+- [Quick Start](https://gohugo.io/getting-started/quick-start/)
+
+- [Host on GitHub](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
