@@ -4,13 +4,13 @@ name = "Home"
 weight = 1
 
 [[main]]
-url = "https://www.cakeresume.com/hank-li"
-name = "About"
+url = "/post/"
+name = "Posts"
 weight = 2
 
 [[main]]
-url = "/post/"
-name = "Posts"
+url = "https://www.cakeresume.com/hank-li"
+name = "About"
 weight = 3
 
 [[main]]

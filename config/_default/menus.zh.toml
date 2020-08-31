@@ -4,13 +4,13 @@ name = "首頁"
 weight = 1
 
 [[main]]
-url = "https://www.cakeresume.com/hank-li"
-name = "履歷"
+url = "/zh/post/"
+name = "文章"
 weight = 2
 
 [[main]]
-url = "/zh/post/"
-name = "文章"
+url = "https://www.cakeresume.com/hank-li"
+name = "履歷"
 weight = 3
 
 [[main]]
