@@ -2,7 +2,7 @@
 title: "Support multiple environments in your android app"
 date: 2020-09-10
 tags: [Android, Firebase]
-draft: true
+draft: false
 ---
 
 Have you ever thought about create multiple environments in Android app? I'd got this question since I created my first Firebase project and finally I tried and found the answer these days. This artical is sharing how to make different variants to connect to different Firebase projects and switch them easily in Android projects.
@@ -99,6 +99,6 @@ Congratulations! You're done all the settings, just switch your variants at `Bui
 
 ### Optional: Setting provider
 
-- If you're using provider in AndroidManifest.xml, rename the package name to `${applicationId}.provider` to `android:authorities` property.
+If you're using provider in AndroidManifest.xml, rename the package name to `${applicationId}.provider` to `android:authorities` property.
 
 ![set provider](/images/2020/sep/10/set_provider.png)
