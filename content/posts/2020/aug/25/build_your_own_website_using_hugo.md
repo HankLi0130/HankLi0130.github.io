@@ -1,10 +1,11 @@
 ---
 title: "Build your own website using Hugo"
 date: 2020-08-25T17:25:39+08:00
+tags: [Hugo]
 draft: false
 ---
 
-![Hogo Logo](/image/2020/aug/25/hugo_logo.png)
+![Hogo Logo](/images/2020/aug/25/hugo_logo.png)
 
 # Why Hugo?
 

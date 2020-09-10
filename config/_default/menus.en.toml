@@ -4,7 +4,7 @@ name = "Home"
 weight = 1
 
 [[main]]
-url = "/post/"
+url = "/posts/"
 name = "Posts"
 weight = 2
 

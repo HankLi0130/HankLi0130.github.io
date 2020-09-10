@@ -1,11 +1,12 @@
 ---
 title: "使用 Hugo 建立自己的網站"
 date: 2020-08-25T17:25:39+08:00
+tags: [Hugo]
 draft: false
 ---
 
 
-![Hogo Logo](/image/2020/aug/25/hugo_logo.png)
+![Hogo Logo](/images/2020/aug/25/hugo_logo.png)
 
 # 為何選擇 Hugo?
 
