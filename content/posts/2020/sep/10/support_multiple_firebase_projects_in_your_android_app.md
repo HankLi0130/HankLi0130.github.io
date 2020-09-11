@@ -1,5 +1,5 @@
 ---
-title: "Support multiple environments in your android app"
+title: "Support multiple Firebase projects in your Android app"
 date: 2020-09-10
 tags: [Android, Firebase]
 draft: false
