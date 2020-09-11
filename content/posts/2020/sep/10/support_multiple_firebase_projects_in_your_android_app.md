@@ -34,7 +34,7 @@ When you created the keys, close the window because we don't need create Bundle 
 
 ### Step 3: Configure build types
 
-Add `signingConfigs` block and `buildTypes` block like below and change to your settings.
+Let's move to `build.gradle`, add `signingConfigs` block and `buildTypes` block like below and change to your settings.
 
 ```gradle
 android {
@@ -81,19 +81,19 @@ android {
 ![create firebase step 1](/images/2020/sep/10/create_firebase_step_1.png)
 
 - Move to Firebase Console, create projects and add Firebase to your Android app. 
-**Note** Here the Android package name must be typed in `applicationId + applicationIdSuffix`, otherwise it won't work. Here I typed `dev.hankli.iamstar.dev` for my development variant.
+**Note** Here the Android package name must be typed like `applicationId + applicationIdSuffix`, otherwise it won't work. Here I typed `dev.hankli.iamstar.dev` for my development variant.
 
 ![create firebase step 2](/images/2020/sep/10/create_firebase_step_2.png)
 
-- Download `google-services.json` file, create specific folder and move the file to your project.
+- Download `google-services.json` file from Firebase console and then back to Android Studio to create specific folder and move the file to your project.
 
 ![create firebase step 3](/images/2020/sep/10/create_firebase_step_3.png)
 
-- And the same steps with the release one.
+- Right now, you're finished the development one, next do the same steps with the release one.
 
 ### Step 4: Switch the variants
  
-Congratulations! You're done all the settings, just switch your variants at `Build Variants` window.
+Congratulations! You're done all the settings, just switch your variants at `Build Variants` window, which is on left-bottom side of Android Studio.
 
 ![switch variants](/images/2020/sep/10/switch_variants.png)
 
@@ -102,3 +102,5 @@ Congratulations! You're done all the settings, just switch your variants at `Bui
 If you're using provider in AndroidManifest.xml, rename the package name to `${applicationId}.provider` to `android:authorities` property.
 
 ![set provider](/images/2020/sep/10/set_provider.png)
+
+### Thanks for reading. Please feel welcome to let me know if you have any questions.
