@@ -1,6 +1,6 @@
 ---
 title: "Support multiple Firebase projects in your Android app"
-date: 2020-09-10
+date: 2020-09-10T18:00:00+08:00
 tags: [Android, Firebase]
 draft: false
 ---
@@ -74,7 +74,7 @@ android {
 }
 ```
 
-### Step 3: Create Firebase projects
+### Step 4: Create Firebase projects
 
 - Click `signingReport` task and the SHA-1 will show up on the window.
 
@@ -91,7 +91,7 @@ android {
 
 - Right now, you're finished the development one, next do the same steps with the release one.
 
-### Step 4: Switch the variants
+### Step 5: Switch the variants
  
 Congratulations! You're done all the settings, just switch your variants at `Build Variants` window, which is on left-bottom side of Android Studio.
 
@@ -103,4 +103,4 @@ If you're using provider in AndroidManifest.xml, rename the package name to `${a
 
 ![set provider](/images/2020/sep/10/set_provider.png)
 
-### Thanks for reading. Please feel welcome to let me know if you have any questions.
+Thanks for reading. Please feel welcome to let me know if you have any questions.
