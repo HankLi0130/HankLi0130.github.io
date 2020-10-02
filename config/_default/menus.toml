@@ -9,7 +9,7 @@ name = "Posts"
 weight = 2
 
 [[main]]
-url = "https://www.cakeresume.com/hank-li"
+url = "/about/"
 name = "About"
 weight = 3
 
