@@ -13,11 +13,6 @@ url = "https://www.cakeresume.com/hank-li"
 name = "About"
 weight = 3
 
-[[main]]
-url = "https://www.cakeresume.com/users/hank-li/portfolio"
-name = "Projects"
-weight = 4
-
 [[icon]]
     url = "mailto:hankli0130@gmail.com"
     name = "envelope-o"
@@ -34,11 +29,6 @@ weight = 4
     weight = 3
 
 [[icon]]
-    url = "https://www.linkedin.com/in/hankli0130/"
-    name = "linkedin"
-    weight = 4
-
-[[icon]]
     url = "https://www.youtube.com/channel/UCVYje6c5eOPJwu2-1tfQiEw"
     name = "youtube"
-    weight = 5
+    weight = 4

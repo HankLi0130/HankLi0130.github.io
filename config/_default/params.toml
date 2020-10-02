@@ -1,11 +1,13 @@
 author = "Hank Li"
-profilePic = "images/profile/hank_head_shot.jpg"
-description = "Life, Tech and stuff"
+description = "Life, tech and stuff"
 githubUsername = "HankLi0130"
-accent = "gray"
+accent = "#E4CD05"
 showBorder = true
 backgroundColor = "white"
-font = "Raleway" # should match the name on Google Fonts!
+font = "RalReway" # should match the name on Google Fonts!
 highlight = true
 highlightStyle = "default"
 highlightLanguages = ["kotlin", "java"]
+
+profilePic = "images/profile/hank_head_shot.jpg"
+copyright = "Copyright © 2020 Hank Li. All rights reserved."

@@ -1,9 +1,0 @@
-[en]
-  languageCode = "en-ca"
-  weight = 1
-  copyright = "Copyright © 2020 Hank Li. All rights reserved."
-
-[zh]
-  languageCode = "zh-tw"
-  weight = 2
-  copyright = "Copyright © 2020 Hank Li. 保留一切權利。"
