@@ -5,7 +5,7 @@ tags: [Hugo]
 draft: false
 ---
 
-![Hogo Logo](/images/2020/aug/25/hugo_logo.png)
+![Hogo Logo](/posts/2020/0825/hugo_logo.png)
 
 # Why Hugo?
 

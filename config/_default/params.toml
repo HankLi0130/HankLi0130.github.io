@@ -9,5 +9,5 @@ highlight = true
 highlightStyle = "default"
 highlightLanguages = ["kotlin", "java"]
 
-profilePic = "images/profile/hank_head_shot.jpg"
+profilePic = "/profile/hank_head_shot.jpg"
 copyright = "Copyright © 2020 Hank Li. All rights reserved."

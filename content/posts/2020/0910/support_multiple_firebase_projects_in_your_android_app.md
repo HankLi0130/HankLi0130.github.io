@@ -19,16 +19,16 @@ It's really easy to create a keystore, Just open Android Studio and follow steps
 
 - Choose `Build` and `Generate Signed Bundle / APK`.
 
-![create key step 1](/images/2020/sep/10/create_key_step_1.png)
+![create key step 1](/posts/2020/0910/create_key_step_1.png)
 
 - Choose one of these two options, in my case, I selected the Android App Bundle.
-![create key step 2](/images/2020/sep/10/create_key_step_2.png)
+![create key step 2](/posts/2020/0910/create_key_step_2.png)
 
 - Click `Create New...` button.
-![create key step 3](/images/2020/sep/10/create_key_step_3.png)
+![create key step 3](/posts/2020/0910/create_key_step_3.png)
 
 - Type the informations and then press `OK` button.
-![create key step 4](/images/2020/sep/10/create_key_step_4.png)
+![create key step 4](/posts/2020/0910/create_key_step_4.png)
 
 When you created the keys, close the window because we don't need create Bundle or APK.
 
@@ -78,16 +78,16 @@ android {
 
 - Click `signingReport` task and the SHA-1 will show up on the window.
 
-![create firebase step 1](/images/2020/sep/10/create_firebase_step_1.png)
+![create firebase step 1](/posts/2020/0910/create_firebase_step_1.png)
 
 - Move to Firebase Console, create projects and add Firebase to your Android app. 
 **Note** Here the Android package name must be typed like `applicationId + applicationIdSuffix`, otherwise it won't work. Here I typed `dev.hankli.iamstar.dev` for my development variant.
 
-![create firebase step 2](/images/2020/sep/10/create_firebase_step_2.png)
+![create firebase step 2](/posts/2020/0910/create_firebase_step_2.png)
 
 - Download `google-services.json` file from Firebase console and then back to Android Studio to create specific folder and move the file to your project.
 
-![create firebase step 3](/images/2020/sep/10/create_firebase_step_3.png)
+![create firebase step 3](/posts/2020/0910/create_firebase_step_3.png)
 
 - Right now, you're finished the development one, next do the same steps with the release one.
 
@@ -95,12 +95,12 @@ android {
  
 Congratulations! You're done all the settings, just switch your variants at `Build Variants` window, which is on left-bottom side of Android Studio.
 
-![switch variants](/images/2020/sep/10/switch_variants.png)
+![switch variants](/posts/2020/0910/switch_variants.png)
 
 ### Optional: Setting provider
 
 If you're using provider in AndroidManifest.xml, rename the package name to `${applicationId}.provider` to `android:authorities` property.
 
-![set provider](/images/2020/sep/10/set_provider.png)
+![set provider](/posts/2020/0910/set_provider.png)
 
 Thanks for reading. Please feel welcome to let me know if you have any questions.
