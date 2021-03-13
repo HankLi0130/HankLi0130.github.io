@@ -8,27 +8,22 @@ url = "/posts/"
 name = "Posts"
 weight = 2
 
-[[main]]
-url = "/about/"
-name = "About"
-weight = 3
+[[icon]]
+    url = "https://www.youtube.com/channel/UCVYje6c5eOPJwu2-1tfQiEw"
+    name = "youtube"
+    weight = 1
 
 [[icon]]
-    url = "mailto:hankli0130@gmail.com"
-    name = "envelope-o"
-    weight = 1
+    url = "https://www.linkedin.com/in/hankli0130"
+    name = "linkedin"
+    weight = 2
 
 [[icon]]
     url = "https://github.com/HankLi0130/"
     name = "github"
-    weight = 2
-
-[[icon]]
-    url = "https://twitter.com/HankLi0130/"
-    name = "twitter"
     weight = 3
 
 [[icon]]
-    url = "https://www.youtube.com/channel/UCVYje6c5eOPJwu2-1tfQiEw"
-    name = "youtube"
+    url = "mailto:hankli0130@gmail.com"
+    name = "envelope-o"
     weight = 4
