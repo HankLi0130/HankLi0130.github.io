@@ -4,14 +4,9 @@ name = "Home"
 weight = 1
 
 [[main]]
-url = "/posts/"
+url = "https://hankdev.medium.com"
 name = "Posts"
 weight = 2
-
-[[main]]
-url = "/projects/"
-name = "Projects"
-weight = 3
 
 [[icon]]
     url = "https://www.youtube.com/channel/UCVYje6c5eOPJwu2-1tfQiEw"
