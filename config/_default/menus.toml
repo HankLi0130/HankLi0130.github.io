@@ -4,7 +4,7 @@ name = "Home"
 weight = 1
 
 [[main]]
-url = "https://hankdev.medium.com"
+url = "/posts"
 name = "Posts"
 weight = 2
 
@@ -13,10 +13,10 @@ weight = 2
     name = "fab fa-youtube"
     weight = 1
 
-[[icon]]
-    url = "https://www.linkedin.com/in/hankli0130"
-    name = "fab fa-linkedin"
-    weight = 2
+ [[icon]]
+    url = "https://hankdev.medium.com/"
+    name = "fab fa-medium"
+    weight = 2  
 
 [[icon]]
     url = "https://github.com/HankLi0130/"

@@ -1,13 +1,13 @@
 author = "Hank Li"
 description = "Shares Android development and Kotlin programming."
 githubUsername = "HankLi0130"
-accent = "#FFFFFF"
-showBorder = false
+accent = "#000000"
+showBorder = true
 backgroundColor = "white"
 font = "RalReway" # should match the name on Google Fonts!
 highlight = true
 highlightStyle = "default"
 highlightLanguages = ["kotlin"]
 
-profilePic = "/profile/hank_head_shot.jpg"
+profilePic = "/profile/hank_avatar.png"
 copyright = "Copyright © 2021 Hank Dev. All rights reserved."
