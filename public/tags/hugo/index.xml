@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo on Hank Dev</title>
+    <title>Hugo on Hank Li</title>
     <link>https://hankli0130.github.io/tags/hugo/</link>
-    <description>Recent content in Hugo on Hank Dev</description>
+    <description>Recent content in Hugo on Hank Li</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-ca</language>
     <lastBuildDate>Tue, 25 Aug 2020 17:25:39 +0800</lastBuildDate><atom:link href="https://hankli0130.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />

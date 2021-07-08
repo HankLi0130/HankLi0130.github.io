@@ -1,6 +1,6 @@
 baseURL = "https://hankli0130.github.io/"
 languageCode = "en-ca"
-title = "Hank Dev"
+title = "Hank Li"
 theme = "minimal"
 # disqusShortname = "username" # delete this to disable disqus comments
 googleAnalytics = ""
