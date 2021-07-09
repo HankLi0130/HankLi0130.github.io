@@ -3,10 +3,10 @@ title: "Support multiple Firebase projects in your Android app"
 date: 2020-09-10T18:00:00+08:00
 tags: [Android, Firebase]
 draft: false
-image: "/posts/2020/0910/android_with_firebase.png"
+image: "/post/2020/0910/android_with_firebase.png"
 ---
 
-![Android with Firebase](/posts/2020/0910/android_with_firebase.png)
+![Android with Firebase](/post/2020/0910/android_with_firebase.png)
 
 Have you ever thought about create multiple environments in Android app? I'd got this question since I created my first Firebase project and finally I tried and found the answer these days. This artical is sharing how to make different variants to connect to different Firebase projects and switch them easily in Android projects.
 
@@ -22,16 +22,16 @@ It's really easy to create a keystore, Just open Android Studio and follow steps
 
 - Choose `Build` and `Generate Signed Bundle / APK`.
 
-![create key step 1](/posts/2020/0910/create_key_step_1.png)
+![create key step 1](/post/2020/0910/create_key_step_1.png)
 
 - Choose one of these two options, in my case, I selected the Android App Bundle.
-![create key step 2](/posts/2020/0910/create_key_step_2.png)
+![create key step 2](/post/2020/0910/create_key_step_2.png)
 
 - Click `Create New...` button.
-![create key step 3](/posts/2020/0910/create_key_step_3.png)
+![create key step 3](/post/2020/0910/create_key_step_3.png)
 
 - Type the informations and then press `OK` button.
-![create key step 4](/posts/2020/0910/create_key_step_4.png)
+![create key step 4](/post/2020/0910/create_key_step_4.png)
 
 When you created the keys, close the window because we don't need create Bundle or APK.
 
@@ -81,16 +81,16 @@ android {
 
 - Click `signingReport` task and the SHA-1 will show up on the window.
 
-![create firebase step 1](/posts/2020/0910/create_firebase_step_1.png)
+![create firebase step 1](/post/2020/0910/create_firebase_step_1.png)
 
 - Move to Firebase Console, create projects and add Firebase to your Android app. 
 **Note** Here the Android package name must be typed like `applicationId + applicationIdSuffix`, otherwise it won't work. Here I typed `dev.hankli.iamstar.dev` for my development variant.
 
-![create firebase step 2](/posts/2020/0910/create_firebase_step_2.png)
+![create firebase step 2](/post/2020/0910/create_firebase_step_2.png)
 
 - Download `google-services.json` file from Firebase console and then back to Android Studio to create specific folder and move the file to your project.
 
-![create firebase step 3](/posts/2020/0910/create_firebase_step_3.png)
+![create firebase step 3](/post/2020/0910/create_firebase_step_3.png)
 
 - Right now, you're finished the development one, next do the same steps with the release one.
 
@@ -98,12 +98,12 @@ android {
  
 Congratulations! You're done all the settings, just switch your variants at `Build Variants` window, which is on left-bottom side of Android Studio.
 
-![switch variants](/posts/2020/0910/switch_variants.png)
+![switch variants](/post/2020/0910/switch_variants.png)
 
 ### Optional: Setting provider
 
 If you're using provider in AndroidManifest.xml, rename the package name to `${applicationId}.provider` to `android:authorities` property.
 
-![set provider](/posts/2020/0910/set_provider.png)
+![set provider](/post/2020/0910/set_provider.png)
 
 Thanks for reading. Please feel welcome to let me know if you have any questions.
