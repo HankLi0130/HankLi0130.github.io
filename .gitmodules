@@ -1,0 +1,3 @@
+[submodule "themes/minimal"]
+	path = themes/minimal
+	url = git@github.com:HankLi0130/blog-theme.git
