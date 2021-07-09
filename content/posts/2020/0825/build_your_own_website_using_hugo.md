@@ -3,6 +3,7 @@ title: "Build your own website using Hugo"
 date: 2020-08-25T17:25:39+08:00
 tags: [Hugo]
 draft: false
+image: "/posts/2020/0825/hugo_logo.png"
 ---
 
 ![Hogo Logo](/posts/2020/0825/hugo_logo.png)

@@ -3,7 +3,10 @@ title: "Support multiple Firebase projects in your Android app"
 date: 2020-09-10T18:00:00+08:00
 tags: [Android, Firebase]
 draft: false
+image: "/posts/2020/0910/android_with_firebase.png"
 ---
+
+![Android with Firebase](/posts/2020/0910/android_with_firebase.png)
 
 Have you ever thought about create multiple environments in Android app? I'd got this question since I created my first Firebase project and finally I tried and found the answer these days. This artical is sharing how to make different variants to connect to different Firebase projects and switch them easily in Android projects.
 
