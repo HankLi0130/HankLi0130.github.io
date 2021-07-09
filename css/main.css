@@ -45,8 +45,8 @@ img {
 /* Profile picture */
 
 .profile {
-    width: 10vh;
-    height: 10vh;
+    width: 20vh;
+    height: 20vh;
     border-radius: 50%;
 }
 
@@ -105,4 +105,9 @@ a:hover {
 
 footer {
     border-bottom: var(--border-width) solid var(--accent);
+}
+
+/* Images */
+.img-title {
+    width: 100%;
 }
