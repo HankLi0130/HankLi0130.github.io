@@ -3,22 +3,22 @@ url = "/"
 name = "Home"
 weight = 1
 
-[[main]]
-url = "/post"
-name = "Posts"
-weight = 2
+[[icon]]
+    url = "https://hankli0130.medium.com/"
+    name = "fab fa-medium"
+    weight = 1
 
 [[icon]]
     url = "https://www.youtube.com/channel/UCVYje6c5eOPJwu2-1tfQiEw"
     name = "fab fa-youtube"
-    weight = 1  
+    weight = 2  
 
 [[icon]]
     url = "https://github.com/HankLi0130"
     name = "fab fa-github"
-    weight = 2
+    weight = 3
 
 [[icon]]
     url = "mailto:hankli0130@gmail.com"
     name = "fas fa-envelope"
-    weight = 3
+    weight = 4
