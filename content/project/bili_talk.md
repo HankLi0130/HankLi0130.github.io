@@ -1,11 +1,11 @@
 ---
-title: "Bili Talk"
+title: "Bili Talk Chat App"
 date: 2021-09-01T14:19:00+08:00
 draft: false
-image: ""
+image: "/project/bili_talk/preview.png"
 ---
 
-# Bili Talk Chat App
+## The part of project I've involved.
 
 ## App Previews
 
