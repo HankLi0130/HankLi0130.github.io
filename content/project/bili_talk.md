@@ -9,7 +9,7 @@ weight: 0
 draft: false
 ---
 
-Bili talk was the project I worked on when I was in MiiiTech. It's a chatting app, like WeChat.
+Bili talk is the project I worked on when I was in MiiiTech. It's a chatting app, like WeChat.
 
 ## My responsibility
 
