@@ -1,17 +1,26 @@
 ---
 title: "Bili Talk"
-date: 2021-09-01T14:19:00+08:00
-draft: false
+date: 2021-09-01
 image: "/project/bili_talk/preview.png"
+description: ""
+repo: ""
+tags: []
+weight: 0
+draft: false
 ---
 
 Bili talk was the project I worked on when I was in MiiiTech. It's a chatting app, like WeChat.
 
 ## My responsibility
 
-- Implemented new features using Kotlin.
-- Fixed bugs using Java.
-- Supported backend to deploy services with Docker.
+- Implemented new features and fixed bugs.
+- Deployed the backend services with Docker.
+
+## Tech Stack
+
+- Java (language)
+- Socket
+- Android foreground service
 
 ## App Previews
 
