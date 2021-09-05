@@ -24,6 +24,11 @@ weight = 2
     weight = 3
 
 [[icon]]
+    url = "https://play.google.com/store/apps/developer?id=Hank+Li"
+    name = "fab fa-google-play"
+    weight = 4   
+
+[[icon]]
     url = "mailto:hankli0130@gmail.com"
     name = "fas fa-envelope"
-    weight = 4
+    weight = 5
