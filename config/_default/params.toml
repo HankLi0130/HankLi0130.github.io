@@ -1,7 +1,7 @@
 author = "Hank Li"
 description = "Shares Android development and Kotlin programming."
 githubUsername = "HankLi0130"
-accent = "#ff9900"
+accent = "#007bff"
 showBorder = false
 backgroundColor = "white"
 font = "Roboto" # should match the name on Google Fonts!

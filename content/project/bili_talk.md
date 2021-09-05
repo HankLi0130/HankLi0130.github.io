@@ -1,11 +1,17 @@
 ---
-title: "Bili Talk Chat App"
+title: "Bili Talk"
 date: 2021-09-01T14:19:00+08:00
 draft: false
 image: "/project/bili_talk/preview.png"
 ---
 
-## The part of project I've involved.
+Bili talk was the project I worked on when I was in MiiiTech. It's a chatting app, like WeChat.
+
+## My responsibility
+
+- Implemented new features using Kotlin.
+- Fixed bugs using Java.
+- Supported backend to deploy services with Docker.
 
 ## App Previews
 
