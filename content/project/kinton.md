@@ -16,9 +16,9 @@ Kinton is one of my side projects, which is a online menu app and it helps custo
 ## Tech Stack
 
 - Kotlin (language)
-- MVVM (Architecture), LiveData, Bottom Navigation
-- KOIN (Dependency injection)
-- Firebase Authentication
+- MVVM (architecture), liveData, bottom navigation
+- KOIN (dependency injection)
+- Firebase authentication
 - Moshi (JSON)
 - Zxing (QR code)
 
