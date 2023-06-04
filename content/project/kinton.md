@@ -9,7 +9,7 @@ weight: 0
 draft: false
 ---
 
-Kinton is one of my side projects, which is a online menu app and it helps customers oder reman online.
+Kinton is one of my side projects, which is a online menu app and it helps customers order ramen online.
 
 [GitHub](https://github.com/HankLi0130/Kinton)
 
