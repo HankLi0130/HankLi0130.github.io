@@ -1,5 +1,5 @@
 author = "Hank Li"
-description = "Shares Android development and Kotlin programming."
+description = "I am from Taiwan 🇹🇼."
 githubUsername = "HankLi0130"
 accent = "#007bff"
 showBorder = false
@@ -10,4 +10,4 @@ highlightStyle = "default"
 highlightLanguages = ["kotlin", "swift"]
 
 profilePic = "/profile/hank_avatar.png"
-copyright = "Copyright © 2021 Hank Li. All rights reserved."
+copyright = "Copyright © 2021 ~ 2023 Hank Li. All rights reserved."
