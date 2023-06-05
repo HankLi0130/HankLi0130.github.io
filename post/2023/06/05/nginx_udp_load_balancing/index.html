@@ -1,0 +1,105 @@
+<!doctype html><html lang=en-ca><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>UDP load balancing using NGINX</title><style>html body{font-family:roboto,sans-serif;background-color:#fff}:root{--accent:#007bff;--border-width:0}</style><link rel=stylesheet href=https://hankli0130.github.io/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin=anonymous><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script>$(document).on("click",function(){$(".collapse").collapse("hide")})</script><meta name=generator content="Hugo 0.112.7"><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class=container><div class=navbar-header><a class="navbar-brand visible-xs" href=#>UDP load balancing using NGINX</a>
+<button class=navbar-toggle data-target=.navbar-collapse data-toggle=collapse>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav"><li><a href=/>Home</a></li><li><a href=/post>Posts</a></li><li><a href=/project>Projects</a></li></ul><ul class="nav navbar-nav navbar-right"><li class=navbar-icon><a href=https://hankli0130.medium.com/><i class="fab fa-medium"></i></a></li><li class=navbar-icon><a href=https://www.youtube.com/channel/UCVYje6c5eOPJwu2-1tfQiEw><i class="fab fa-youtube"></i></a></li><li class=navbar-icon><a href=https://github.com/HankLi0130><i class="fab fa-github"></i></a></li><li class=navbar-icon><a href="https://play.google.com/store/apps/developer?id=Hank+Li"><i class="fab fa-google-play"></i></a></li><li class=navbar-icon><a href=mailto:hankli0130@gmail.com><i class="fas fa-envelope"></i></a></li></ul></div></div></nav><main><div><h2>UDP load balancing using NGINX</h2><h5>June 5, 2023</h5><a href=https://hankli0130.github.io/tags/nginx><kbd class=item-tag>nginx</kbd></a></div><div align=start class=content><h1 id=setup-nginx-as-an-udp-load-balancer>Setup NGINX as an UDP load balancer</h1><p><a href=https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/>TCP and UDP Load Balancing</a></p><h2 id=how-to-do-it>How to do it?</h2><h3 id=configuration---nginxconf>Configuration - <code>nginx.conf</code></h3><p>I used default <code>nginx.conf</code> and added <code>stream</code> block.</p><pre tabindex=0><code class=language-conf data-lang=conf>user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+	worker_connections 768;
+	# multi_accept on;
+}
+
+stream {
+        upstream leaf_servers {
+                server leaf1.teontest.site:1443; # UDP port server 1
+                server leaf2.teontest.site:1443; # UDP port server 2
+	}
+        server {
+	        listen     1443 udp; # listen UDP port
+		proxy_pass leaf_servers;
+	}
+}
+
+http {
+
+	##
+	# Basic Settings
+	##
+
+	sendfile on;
+	tcp_nopush on;
+	types_hash_max_size 2048;
+	# server_tokens off;
+
+	# server_names_hash_bucket_size 64;
+	# server_name_in_redirect off;
+
+	include /etc/nginx/mime.types;
+	default_type application/octet-stream;
+
+	##
+	# SSL Settings
+	##
+
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+	ssl_prefer_server_ciphers on;
+
+	##
+	# Logging Settings
+	##
+
+	access_log /var/log/nginx/access.log;
+	error_log /var/log/nginx/error.log;
+
+	##
+	# Gzip Settings
+	##
+
+	gzip on;
+
+	# gzip_vary on;
+	# gzip_proxied any;
+	# gzip_comp_level 6;
+	# gzip_buffers 16 8k;
+	# gzip_http_version 1.1;
+	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+	##
+	# Virtual Host Configs
+	##
+
+	include /etc/nginx/conf.d/*.conf;
+	include /etc/nginx/sites-enabled/*;
+}
+
+
+#mail {
+#	# See sample authentication script at:
+#	# http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+#
+#	# auth_http localhost/auth.php;
+#	# pop3_capabilities &#34;TOP&#34; &#34;USER&#34;;
+#	# imap_capabilities &#34;IMAP4rev1&#34; &#34;UIDPLUS&#34;;
+#
+#	server {
+#		listen     localhost:110;
+#		protocol   pop3;
+#		proxy      on;
+#	}
+#
+#	server {
+#		listen     localhost:143;
+#		protocol   imap;
+#		proxy      on;
+#	}
+#}
+</code></pre><h3 id=start-docker>Start Docker</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>sudo docker run -d --name<span style=color:#f92672>=</span>load_balancer_udp --network host -v /home/ubuntu/nginx_udp/nginx.conf:/etc/nginx/nginx.conf:ro nginx:1.25.0
+</span></span></code></pre></div></div></main><footer><p class="copyright text-muted">Copyright © 2021 ~ 2023 Hank Li. All rights reserved.</p></footer></body></html>
