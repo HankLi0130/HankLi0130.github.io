@@ -3,7 +3,10 @@ title: "UDP load balancing using NGINX"
 date: 2023-06-05
 tags: ["NGINX"]
 draft: false
+image: "/post/2023/06/05/NGINX.png"
 ---
+
+![nginx logo](/post/2023/06/05/NGINX.png)
 
 # Setup NGINX as an UDP load balancer
 

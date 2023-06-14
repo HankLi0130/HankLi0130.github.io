@@ -3,9 +3,12 @@ title: "Single choice dialog with Jetpack Compose"
 date: 2023-06-14
 tags: ["Android", "Jetpack Compose"]
 draft: false
+image: "/post/2023/06/14/JetpackCompose.png"
 ---
 
-# Single choice dialog with Jetpack Compose
+![Jetpack Compose](/post/2023/06/14/JetpackCompose.png)
+
+# Alertdialog Example
 
 A car selection with single choice dialog with Jetpack Compose
 
