@@ -1,7 +1,7 @@
 ---
 title: "UDP load balancing using NGINX"
 date: 2023-06-05
-tags: [nginx]
+tags: ["NGINX"]
 draft: false
 ---
 
