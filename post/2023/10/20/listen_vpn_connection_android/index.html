@@ -1,0 +1,49 @@
+<!doctype html><html lang=en-ca><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Listen VPN connection in Android</title><style>html body{font-family:roboto,sans-serif;background-color:#fff}:root{--accent:#007bff;--border-width:0}</style><link rel=stylesheet href=https://hankli0130.github.io/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin=anonymous><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script>$(document).on("click",function(){$(".collapse").collapse("hide")})</script><meta name=generator content="Hugo 0.119.0"><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class=container><div class=navbar-header><a class="navbar-brand visible-xs" href=#>Listen VPN connection in Android</a>
+<button class=navbar-toggle data-target=.navbar-collapse data-toggle=collapse>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav"><li><a href=/>Home</a></li><li><a href=/post>Posts</a></li><li><a href=/project>Projects</a></li></ul><ul class="nav navbar-nav navbar-right"><li class=navbar-icon><a href=https://hankli0130.medium.com/><i class="fab fa-medium"></i></a></li><li class=navbar-icon><a href=https://www.youtube.com/channel/UCVYje6c5eOPJwu2-1tfQiEw><i class="fab fa-youtube"></i></a></li><li class=navbar-icon><a href=https://github.com/HankLi0130><i class="fab fa-github"></i></a></li><li class=navbar-icon><a href="https://play.google.com/store/apps/developer?id=Hank+Li"><i class="fab fa-google-play"></i></a></li><li class=navbar-icon><a href=mailto:hankli0130@gmail.com><i class="fas fa-envelope"></i></a></li></ul></div></div></nav><main><div><h2>Listen VPN connection in Android</h2><h5>October 20, 2023</h5><a href=https://hankli0130.github.io/tags/android><kbd class=item-tag>Android</kbd></a></div><div align=start class=content><p><img src=/common/android.png alt=android></p><h1 id=the-reason>The reason</h1><p>I found that my VPN app has a bug that when disconnecting the VPN from settings (Network & internet -> VPN), my VpnService wouldn&rsquo;t be killed.</p><p>Finally, I got the cause, it&rsquo;s because the <code>VpnService.onRevoke()</code> was not called when the VPN was killed from settings.</p><p>So I was thinking, is there any way to listen VPN connection in Android?</p><h2 id=here-is-what-i-got>Here is what I got:</h2><h3 id=listen-vpn-connection-using-connectivitymanager>Listen VPN connection using <code>ConnectivityManager</code></h3><p>Close the VPN connection when <code>onLost</code> was called.</p><pre tabindex=0><code>// In VpnService
+
+// Callback
+private val networkCallback = object : NetworkCallback() {
+    override fun onAvailable(network: Network) {
+        Log.i(&#34;Network onAvailable: &#34;)
+    }
+
+    override fun onLost(network: Network) {
+        Log.i(&#34;Network onLost: &#34;)
+        // Do something to stop VPN 
+    }
+}
+
+// Start listen VPN connection
+override fun onCreate() {
+    val request = NetworkRequest.Builder()
+        .addTransportType(TRANSPORT_VPN)
+        .removeCapability(NET_CAPABILITY_NOT_VPN)
+        .removeCapability(NET_CAPABILITY_INTERNET)
+        .build()
+
+    getSystemService(ConnectivityManager::class.java)
+        .registerNetworkCallback(request, networkCallback)
+}
+
+// Stop listen VPN connection
+override fun onDestroy() {
+    getSystemService(ConnectivityManager::class.java)
+        .unregisterNetworkCallback(networkCallback)
+}
+</code></pre><h3 id=call-onrevoke-when-ontransact-was-triggered-in-binder>Call <code>onRevoke</code> when <code>onTransact</code> was triggered in <code>Binder</code></h3><p>Also, I can use <code>onTransact</code> to close the VPN connection when users disconnect the VPN from settings.</p><p>I&rsquo;m using a customized <code>Binder</code> for communicating to my <code>VpnService</code>, it will trigger the <code>onTransact</code> when the VPN was killed from settings.</p><pre tabindex=0><code>override fun onTransact(code: Int, data: Parcel, reply: Parcel?, flags: Int): Boolean {
+    if (code == IBinder.LAST_CALL_TRANSACTION) {
+        onRevoke()
+        return true
+    }
+    return super.onTransact(code, data, reply, flags)
+}    
+</code></pre><h3 id=references>References</h3><ul><li><a href=https://android.googlesource.com/platform/cts/+/4a305d5%5E%21/>Register a callback so we will be notified when our VPN comes up.</a></li><li><a href=https://stackoverflow.com/a/65122254>ConnectivityManager.NetworkCallback calls missing when a VPN is connected/disconnected</a></li><li><a href=https://stackoverflow.com/a/15731435>How to add additional handlings to Vpn disconnection in Android?</a></li></ul></div><h4 class=page-header>Related</h4><div class=item><h4><a href=/post/2023/06/14/single_choice_dialog_with_jetpack_compose/>Single choice dialog with Jetpack Compose</a></h4><img src=/post/2023/06/14/JetpackCompose.png alt="Single choice dialog with Jetpack Compose" class=img-title><h5>June 14, 2023</h5><a href=https://hankli0130.github.io/tags/android><kbd class=item-tag>Android</kbd></a>
+<a href=https://hankli0130.github.io/tags/jetpack-compose><kbd class=item-tag>Jetpack Compose</kbd></a></div></main><footer><p class="copyright text-muted">Copyright © 2021 ~ 2023 Hank Li. All rights reserved.</p></footer></body></html>
