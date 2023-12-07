@@ -1,5 +1,5 @@
 ---
-title: "Pihole_installation"
+title: "Pihole installation"
 date: 2023-12-07
 tags: ["Pi-hole", "DNS"]
 draft: false
