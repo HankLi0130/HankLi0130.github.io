@@ -1,0 +1,81 @@
+<!doctype html><html lang=en-ca><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Pihole installation</title><style>html body{font-family:roboto,sans-serif;background-color:#fff}:root{--accent:#007bff;--border-width:0}</style><link rel=stylesheet href=https://hankli0130.github.io/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin=anonymous><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js></script><script>hljs.initHighlightingOnLoad()</script><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js></script><script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script><script>$(document).on("click",function(){$(".collapse").collapse("hide")})</script><meta name=generator content="Hugo 0.121.0"><script type=text/javascript async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></head><body><nav class="navbar navbar-default navbar-fixed-top"><div class=container><div class=navbar-header><a class="navbar-brand visible-xs" href=#>Pihole installation</a>
+<button class=navbar-toggle data-target=.navbar-collapse data-toggle=collapse>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button></div><div class="collapse navbar-collapse"><ul class="nav navbar-nav"><li><a href=/>Home</a></li><li><a href=/post>Posts</a></li><li><a href=/project>Projects</a></li></ul><ul class="nav navbar-nav navbar-right"><li class=navbar-icon><a href=https://hankli0130.medium.com/><i class="fab fa-medium"></i></a></li><li class=navbar-icon><a href=https://www.youtube.com/channel/UCVYje6c5eOPJwu2-1tfQiEw><i class="fab fa-youtube"></i></a></li><li class=navbar-icon><a href=https://github.com/HankLi0130><i class="fab fa-github"></i></a></li><li class=navbar-icon><a href="https://play.google.com/store/apps/developer?id=Hank+Li"><i class="fab fa-google-play"></i></a></li><li class=navbar-icon><a href=mailto:hankli0130@gmail.com><i class="fas fa-envelope"></i></a></li></ul></div></div></nav><main><div><h2>Pihole installation</h2><h5>December 7, 2023</h5><a href=https://hankli0130.github.io/tags/pi-hole><kbd class=item-tag>Pi-hole</kbd></a>
+<a href=https://hankli0130.github.io/tags/dns><kbd class=item-tag>DNS</kbd></a></div><div align=start class=content><p><img src=/post/2023/12/07/pihole_ubuntu.png alt=pihole></p><h1 id=pi-holehttpspi-holenet><a href=https://pi-hole.net/>Pi-hole</a></h1><p>The Pi-hole is a DNS sinkhole that protects your devices from unwanted content without installing any client-side software.</p><h2 id=how-to-deploy-pi-hole-using-docker>How to deploy Pi-hole using Docker?</h2><p>More detials on <a href=https://github.com/pi-hole/docker-pi-hole>docker-pi-hole</a>.</p><h3 id=preparation>Preparation</h3><ol><li>Ubuntu 22.04 (x86)</li><li>Enable <code>53</code> and <code>80</code> ports</li><li>Copy the scripts on the bottom and then save them to files to your machine.</li></ol><h3 id=install-docker>Install docker</h3><p>Let&rsquo;s install docker first.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># update</span>
+</span></span><span style=display:flex><span>sudo apt update
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># move to the Pi-hole folder</span>
+</span></span><span style=display:flex><span>cd pihole
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># install docker via install_docker.sh</span>
+</span></span><span style=display:flex><span>sudo ./install_docker.sh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># start Pi-hole with Docker compose</span>
+</span></span><span style=display:flex><span>sudo docker compose up -d
+</span></span></code></pre></div><p>After Docker images downloaded, you probably will see the message of port <code>53</code> has been listened, right now, we need to disable the stub resolver.</p><h3 id=disable-the-stub-resolver-on-ubuntu>Disable the stub resolver on Ubuntu</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># disable the stub resolver</span>
+</span></span><span style=display:flex><span>sudo ./update_systemd_resolved.sh
+</span></span></code></pre></div><p>More details on <a href=https://github.com/pi-hole/docker-pi-hole#installing-on-ubuntu-or-fedora>Installing on Ubuntu or Fedora</a></p><h3 id=run-pi-hole-again>Run Pi-hole again</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># start Pi-hole with Docker compose</span>
+</span></span><span style=display:flex><span>sudo docker compose up -d
+</span></span></code></pre></div><p>Use <a href=https://canyoublockit.com/>Can You Block It</a> to check if ads are being blocked.</p><h2 id=how-to-undo-the-deployment>How to undo the deployment?</h2><h3 id=stop-and-remove-pi-hole>Stop and remove Pi-hole</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># remove Pi-hole with Docker compose</span>
+</span></span><span style=display:flex><span>sudo docker compose down
+</span></span></code></pre></div><h3 id=enable-the-stub-resolver-on-ubuntu>Enable the stub resolver on Ubuntu</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># enable the stub resolver</span>
+</span></span><span style=display:flex><span>sudo ./undo_systemd_resolved.sh
+</span></span></code></pre></div><h2 id=scripts>Scripts</h2><h3 id=docker-composeyml><code>docker-compose.yml</code></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yml data-lang=yml><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#34;3&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>pihole</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>pihole</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>pihole/pihole:latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;53:53/tcp&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;53:53/udp&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;80:80/tcp&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>TZ</span>: <span style=color:#e6db74>&#39;Asia/Taipei&#39;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>WEBPASSWORD</span>: <span style=color:#e6db74>&#39;Your Password&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Volumes store your data between container upgrades</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;./etc-pihole:/etc/pihole&#39;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#39;./etc-dnsmasq.d:/etc/dnsmasq.d&#39;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>unless-stopped</span>
+</span></span></code></pre></div><h3 id=install_dockersh><code>install_docker.sh</code></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e># Set up the repository</span>
+</span></span><span style=display:flex><span>sudo apt update
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo apt install -y <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    ca-certificates <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    curl <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    gnupg <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    lsb-release
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo mkdir -p /etc/apt/keyrings
+</span></span><span style=display:flex><span>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span><span style=color:#e6db74>&#34;deb [arch=</span><span style=color:#66d9ef>$(</span>dpkg --print-architecture<span style=color:#66d9ef>)</span><span style=color:#e6db74> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+</span></span></span><span style=display:flex><span><span style=color:#e6db74></span><span style=color:#66d9ef>$(</span>lsb_release -cs<span style=color:#66d9ef>)</span><span style=color:#e6db74> stable&#34;</span> | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Install Docker Engine</span>
+</span></span><span style=display:flex><span>sudo apt update
+</span></span><span style=display:flex><span>sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+</span></span></code></pre></div><h3 id=update_systemd_resolvedsh><code>update_systemd_resolved.sh</code></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># https://github.com/pi-hole/docker-pi-hole#installing-on-ubuntu-or-fedora</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Disable the stub resolver</span>
+</span></span><span style=display:flex><span>sudo sed -r -i.orig <span style=color:#e6db74>&#39;s/#?DNSStubListener=yes/DNSStubListener=no/g&#39;</span> /etc/systemd/resolved.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Change the `/etc/resolv.conf` symlink to point to `/run/systemd/resolve/resolv.conf`</span>
+</span></span><span style=display:flex><span>sudo sh -c <span style=color:#e6db74>&#39;rm /etc/resolv.conf &amp;&amp; ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Restart systemd-resolved</span>
+</span></span><span style=display:flex><span>sudo systemctl restart systemd-resolved
+</span></span></code></pre></div><h3 id=undo_systemd_resolvedsh><code>undo_systemd_resolved.sh</code></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># Enable the stub resolver</span>
+</span></span><span style=display:flex><span>sudo sed -r -i.orig <span style=color:#e6db74>&#39;s/DNSStubListener=no/#DNSStubListener=yes/g&#39;</span> /etc/systemd/resolved.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Change the `/etc/resolv.conf` symlink to point to `/run/systemd/resolve/resolv.conf`</span>
+</span></span><span style=display:flex><span>sudo sh -c <span style=color:#e6db74>&#39;rm /etc/resolv.conf &amp;&amp; ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Restart systemd-resolved</span>
+</span></span><span style=display:flex><span>sudo systemctl restart systemd-resolved
+</span></span></code></pre></div></div></main><footer><p class="copyright text-muted">Copyright © 2021 ~ 2023 Hank Li. All rights reserved.</p></footer></body></html>
