@@ -151,3 +151,10 @@ sudo sh -c 'rm /etc/resolv.conf && ln -s /run/systemd/resolve/resolv.conf /etc/r
 # Restart systemd-resolved
 sudo systemctl restart systemd-resolved
 ```
+
+### The Web Interface Dashboard
+
+There are several ways to access the dashboard:
+
+1. `http://pi.hole/admin/` (when using Pi-hole as your DNS server)
+2. `http://<IP_ADDRESS_OF_YOUR_PI_HOLE>/admin/`
